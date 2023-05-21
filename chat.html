@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat Module</title>
+	<style>
+		.chat-container {
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 10px;
+			max-width: 500px;
+			margin: 0 auto;
+		}
+		.chat-message {
+			margin-bottom: 10px;
+		}
+		.chat-message label {
+			display: block;
+			font-weight: bold;
+		}
+		.chat-message input[type="text"], .chat-message textarea {
+			width: 100%;
+			padding: 5px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-bottom: 5px;
+		}
+		.chat-message textarea {
+			height: 100px;
+		}
+		.chat-message button {
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 5px 10px;
+			cursor: pointer;
+			float: right;
+		}
+		.chat-message button:hover {
+			background-color: #3e8e41;
+		}
+		.chat-history {
+			max-height: 300px;
+			overflow-y: scroll;
+		}
+		.chat-history li {
+			margin-bottom: 10px;
+			padding: 5px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		.chat-history li span {
+			font-weight: bold;
+			margin-right: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="chat-container">
+		<ul class="chat-history"></ul>
+		<div class="chat-message">
+			<label for="name">Name:</label>
+			<input type="text" id="name" placeholder="Enter your name" required>
+			<label for="message">Message:</label>
+			<textarea id="message" placeholder="Enter your message" required></textarea>
+			<button type="button" onclick="sendMessage()">Send</button>
+		</div>
+	</div>
+
+	<script>
+		function sendMessage() {
+			var name = document.getElementById("name").value;
+			var message = document.getElementById("message").value;
+			var chatHistory = document.querySelector(".chat-history");
+			var newMessage = document.createElement("li");
+			newMessage.innerHTML = "<span>" + name + ":</span> " + message;
+			chatHistory.appendChild(newMessage);
+			document.getElementById("message").value = "";
+		}
+	</script>
+</body>
+</html>
